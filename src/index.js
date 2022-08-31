@@ -1,7 +1,9 @@
+const dotenv = require("dotenv");
 const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
 const TrackAPI = require("./datasources/track-api");
+const cors = require("cors");
 
 async function startApolloServer(typeDefs, resolvers) {
   const server = new ApolloServer({
@@ -11,6 +13,14 @@ async function startApolloServer(typeDefs, resolvers) {
       return {
         trackAPI: new TrackAPI(),
       };
+    },
+    introspection: true,
+    cors: {
+      credentials: true,
+      origin: [
+        "http://client-catstronauts-test.herokuapp.com",
+        "https://studio.apollographql.com",
+      ],
     },
   });
 
