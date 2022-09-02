@@ -1,4 +1,5 @@
-const dotenv = require("dotenv");
+const dotenv = require("dotenv")
+dotenv.config()
 const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
@@ -18,7 +19,7 @@ async function startApolloServer(typeDefs, resolvers) {
     cors: {
       credentials: true,
       origin: [
-        "https://server-castronauts-test.herokuapp.com",
+        "https://client-catstronauts-test.herokuapp.com",
         "https://studio.apollographql.com",
       ],
     },
